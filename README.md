@@ -33,3 +33,4 @@ git push origin main
 | Alejo Gaisser | [Web eléctronica](https://alejogaisser07.github.io/AlejoGaisser07/) |
 | Facundo Geppert | [Ajedrez web con Stockfish (requiere backend para los modelos pesados)](https://facugeppert.github.io/FacundoGeppert/)
 | Ignacio Mena | [inikis.github.io](https://inikis.github.io)
+| Lorenzo Mendoza | [Página de Death Note](https://austral-prog.github.io/taller-prog-1-github-pages/lorenzoP.html) |
