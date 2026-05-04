@@ -30,3 +30,4 @@ git push origin main
 | Nombre | GitHub Pages |
 |--------|-------------|
 | Ejemplo Alumno | [ejemplo.github.io](https://ejemplo.github.io) |
+| Alejo Gaisser | [Web eléctronica](https://alejogaisser07.github.io/AlejoGaisser07/) |
