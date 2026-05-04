@@ -29,4 +29,4 @@ git push origin main
 
 | Nombre | GitHub Pages |
 |--------|-------------|
-| Ejemplo Alumno | [ejemplo.github.io](https://ejemplo.github.io) |
+| Agustin Castaneda | [Agustin Castaneda](https://aguscastaneda.github.io/aguscastaneda) |
