@@ -30,6 +30,18 @@ git push origin main
 | Nombre | GitHub Pages |
 |--------|-------------|
 | Ejemplo Alumno | [ejemplo.github.io](https://ejemplo.github.io) |
+| Bautista Lalor | [MyWEBPage](https://bautistalalor.github.io) |
 | Alejo Gaisser | [Web eléctronica](https://alejogaisser07.github.io/AlejoGaisser07/) |
 | Facundo Geppert | [Ajedrez web con Stockfish (requiere backend para los modelos pesados)](https://facugeppert.github.io/FacundoGeppert/)
+<<<<<<< HEAD
 | Yago Fuentes | [Mc Donalds Pro](https://yagofuentes.github.io/yagofuentes/)
+=======
+| Ignacio Mena | [inikis.github.io](https://inikis.github.io)
+| Jose Casal | [josecasal3108.github.io](https://josecasal3108.github.io/Jose-Maria-Casal/)|
+| Teruelo Tomas | [Teruelo Tomas](https://teruelo-tomas.github.io/TerueloTomas/) |
+| Mia Misson | [Mi pagina](https://miamisson.github.io/miamisson/) |
+| Agustin Castaneda | [Agustin Castaneda](https://aguscastaneda.github.io/aguscastaneda) |
+| Lorenzo Mendoza | [Página de Death Note](https://lorenzomendozacecchi.github.io/mi-repositorio/lorenzoP.html) |
+| Joaquin Viani | [Portfolio](https://joaquinviani.github.io/) |
+| Santiago Riveira | [Pagina web Independiente](https://riveirasanti.github.io/mi-pagina-web/) |
+>>>>>>> c96fe5152bccfd1b56f3d60d5a6b6f0aaaac1c24
