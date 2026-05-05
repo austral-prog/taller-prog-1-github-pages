@@ -42,4 +42,4 @@ git push origin main
 | Lorenzo Mendoza | [Página de Death Note](https://lorenzomendozacecchi.github.io/mi-repositorio/lorenzoP.html) |
 | Joaquin Viani | [Portfolio](https://joaquinviani.github.io/) |
 | Santiago Riveira | [Pagina web Independiente](https://riveirasanti.github.io/mi-pagina-web/) |
->>>>>>> c96fe5152bccfd1b56f3d60d5a6b6f0aaaac1c24
+| Theo Vernet | [Pagina Web SCP](https://theo-ve.github.io/Theo_Vernet/)
