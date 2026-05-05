@@ -36,3 +36,4 @@ git push origin main
 | Jose Casal | [josecasal3108.github.io](https://josecasal3108.github.io/Jose-Maria-Casal/)|
 | Teruelo Tomas | [Teruelo Tomas](https://teruelo-tomas.github.io/TerueloTomas/) |
 | Mia Misson | [Mi pagina](https://miamisson.github.io/miamisson/) |
+| Agustin Castaneda | [Agustin Castaneda](https://aguscastaneda.github.io/aguscastaneda) |
