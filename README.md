@@ -40,3 +40,4 @@ git push origin main
 | Agustin Castaneda | [Agustin Castaneda](https://aguscastaneda.github.io/aguscastaneda) |
 | Lorenzo Mendoza | [Página de Death Note](https://lorenzomendozacecchi.github.io/mi-repositorio/lorenzoP.html) |
 | Joaquin Viani | [Portfolio](https://joaquinviani.github.io/) |
+| Santiago Riveira | [Pagina web Independiente](https://riveirasanti.github.io/mi-pagina-web/) |
