@@ -34,3 +34,4 @@ git push origin main
 | Facundo Geppert | [Ajedrez web con Stockfish (requiere backend para los modelos pesados)](https://facugeppert.github.io/FacundoGeppert/)
 | Ignacio Mena | [inikis.github.io](https://inikis.github.io)
 | Jose Casal | [josecasal3108.github.io](https://josecasal3108.github.io/Jose-Maria-Casal/)|
+| Teruelo Tomas | [Teruelo Tomas](https://teruelo-tomas.github.io/TerueloTomas/) |
