@@ -38,3 +38,4 @@ git push origin main
 | Teruelo Tomas | [Teruelo Tomas](https://teruelo-tomas.github.io/TerueloTomas/) |
 | Mia Misson | [Mi pagina](https://miamisson.github.io/miamisson/) |
 | Agustin Castaneda | [Agustin Castaneda](https://aguscastaneda.github.io/aguscastaneda) |
+| Lorenzo Mendoza | [Página de Death Note](https://lorenzomendozacecchi.github.io/mi-repositorio/lorenzoP.html) |
