@@ -43,3 +43,4 @@ git push origin main
 | Joaquin Viani | [Portfolio](https://joaquinviani.github.io/) |
 | Santiago Riveira | [Pagina web Independiente](https://riveirasanti.github.io/mi-pagina-web/) |
 | Theo Vernet | [Pagina Web SCP](https://theo-ve.github.io/Theo_Vernet/)
+| Nahuel Ciampichini | [Escasez de ram](https://nahuelciampichini.github.io/nahuelciampi.github.io/) |
