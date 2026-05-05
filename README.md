@@ -33,9 +33,7 @@ git push origin main
 | Bautista Lalor | [MyWEBPage](https://bautistalalor.github.io) |
 | Alejo Gaisser | [Web eléctronica](https://alejogaisser07.github.io/AlejoGaisser07/) |
 | Facundo Geppert | [Ajedrez web con Stockfish (requiere backend para los modelos pesados)](https://facugeppert.github.io/FacundoGeppert/)
-<<<<<<< HEAD
 | Yago Fuentes | [Mc Donalds Pro](https://yagofuentes.github.io/yagofuentes/)
-=======
 | Ignacio Mena | [inikis.github.io](https://inikis.github.io)
 | Jose Casal | [josecasal3108.github.io](https://josecasal3108.github.io/Jose-Maria-Casal/)|
 | Teruelo Tomas | [Teruelo Tomas](https://teruelo-tomas.github.io/TerueloTomas/) |
