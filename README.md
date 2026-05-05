@@ -30,4 +30,9 @@ git push origin main
 | Nombre | GitHub Pages |
 |--------|-------------|
 | Ejemplo Alumno | [ejemplo.github.io](https://ejemplo.github.io) |
+| Alejo Gaisser | [Web eléctronica](https://alejogaisser07.github.io/AlejoGaisser07/) |
+| Facundo Geppert | [Ajedrez web con Stockfish (requiere backend para los modelos pesados)](https://facugeppert.github.io/FacundoGeppert/)
+| Ignacio Mena | [inikis.github.io](https://inikis.github.io)
+| Jose Casal | [josecasal3108.github.io](https://josecasal3108.github.io/Jose-Maria-Casal/)|
+| Teruelo Tomas | [Teruelo Tomas](https://teruelo-tomas.github.io/TerueloTomas/) |
 | Mia Misson | [Mi pagina](https://miamisson.github.io/miamisson/) |
