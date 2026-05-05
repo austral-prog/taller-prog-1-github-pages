@@ -32,3 +32,4 @@ git push origin main
 | Ejemplo Alumno | [ejemplo.github.io](https://ejemplo.github.io) |
 | Alejo Gaisser | [Web eléctronica](https://alejogaisser07.github.io/AlejoGaisser07/) |
 | Facundo Geppert | [Ajedrez web con Stockfish (requiere backend para los modelos pesados)](https://facugeppert.github.io/FacundoGeppert/)
+| Yago Fuentes | [Mc Donalds Pro](https://yagofuentes.github.io/yagofuentes/)
