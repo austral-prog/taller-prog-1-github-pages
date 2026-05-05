@@ -39,4 +39,4 @@ git push origin main
 | Mia Misson | [Mi pagina](https://miamisson.github.io/miamisson/) |
 | Agustin Castaneda | [Agustin Castaneda](https://aguscastaneda.github.io/aguscastaneda) |
 | Lorenzo Mendoza | [Página de Death Note](https://lorenzomendozacecchi.github.io/mi-repositorio/lorenzoP.html) |
-| Joaquin Viani | [Mi página](https://viani.github.io/) |
+| Joaquin Viani | [Portfolio](https://viani.github.io/) |
