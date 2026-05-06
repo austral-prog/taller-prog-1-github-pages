@@ -46,4 +46,4 @@ git push origin main
 | Nahuel Ciampichini | [Escasez de ram](https://nahuelciampichini.github.io/nahuelciampi.github.io/)                                         |
 | Manel Howlin       | [Por qué leer](https://manelhowlin1.github.io/manelhowlin/)                                                           |
 | Gianni Rubil       | [La Maquina De Hacer Pajaros](https://grubil-n.github.io/gianni-rubil/)                                               | 
-| Felipe Heine       | [Ludopatia](https://felipeheine.github.io)                                                                            |
+| Felipe Heine       | [Ludopatia](https://felipeheine.github.io/)                                                                            |
