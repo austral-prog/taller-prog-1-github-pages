@@ -55,5 +55,5 @@ git push origin main
 | Diego Delgado | https://github.com/diego082006/Diego-Delgado |
 | Leandro Friedl | [Escucha Artaud](https://leanfriedl.github.io/spinetta.html) |
 | Tomas Fernandez Rojo | [TomasFernandezRojo](https://tomasfernandezrojo.github.io) |
-| Federico Libonati | [Federico Libonati]((https://fedelibonatiaus.github.io/mi-pagina-fede/)) |
+| Federico Libonati | [Fedelibonatiaus](https://fedelibonatiaus.github.io/mi-pagina-fede/) |
 
