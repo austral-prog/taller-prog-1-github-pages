@@ -54,3 +54,4 @@ git push origin main
 | Bautista-Cevasco   | [San Martin](https://bauticev.github.io/Bautista-Cevasco/) |
 | Diego Delgado | https://github.com/diego082006/Diego-Delgado |
 | Leandro Friedl     | [Escucha Artaud](https://leanfriedl.github.io/spinetta.html)                                                            |
+| Tomas Fernandez Rojo | [TomasFernandezRojo](https://tomasfernandezrojo.github.io) |
