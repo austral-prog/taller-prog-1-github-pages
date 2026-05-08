@@ -52,4 +52,4 @@ git push origin main
 | Andrés Portela | [Taller de Prog](https://lancito01.github.io/taller-prog1) |
 | Santiago Sucatte   | [DLSS 5](https://santiagosucatte.github.io/DLSS5/)    
 | Bautista-Cevasco   | [San Martin](https://bauticev.github.io/Bautista-Cevasco/) |
-! Diego Delgado | https://github.com/diego082006/Diego-Delgado |
+| Diego Delgado | https://github.com/diego082006/Diego-Delgado |
