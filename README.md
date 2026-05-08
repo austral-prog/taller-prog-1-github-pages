@@ -51,4 +51,4 @@ git push origin main
 | Catalina Becedillas | [Fórmula 1](https://catabecedillas.github.io/CataBecedillas/)         |
 | Andrés Portela | [Taller de Prog](https://lancito01.github.io/taller-prog1) |
 | Santiago Sucatte   | [DLSS 5](https://santiagosucatte.github.io/DLSS5/)    
-| Santiago Sucatte   | [San Martin](https://bauticev.github.io/Bautista-Cevasco/) |
+| Bautista-Cevasco   | [San Martin](https://bauticev.github.io/Bautista-Cevasco/) |
