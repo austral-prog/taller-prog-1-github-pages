@@ -53,4 +53,4 @@ git push origin main
 | Santiago Sucatte   | [DLSS 5](https://santiagosucatte.github.io/DLSS5/)    
 | Bautista-Cevasco   | [San Martin](https://bauticev.github.io/Bautista-Cevasco/) |
 | Diego Delgado | https://github.com/diego082006/Diego-Delgado |
-| Leandro Friedl     | [Escucha Artaud](https://github.com/leanfriedl/leanfriedl.github.io.git)                                              |
+| Leandro Friedl     | [Escucha Artaud](https://leanfriedl.github.io/spinetta.html)                                                            |
