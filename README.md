@@ -52,7 +52,7 @@ git push origin main
 | Andrés Portela | [Taller de Prog](https://lancito01.github.io/taller-prog1) |
 | Santiago Sucatte  | [DLSS 5](https://santiagosucatte.github.io/DLSS5/)    
 | Bautista-Cevasco  | [San Martin](https://bauticev.github.io/Bautista-Cevasco/) |
-| Diego Delgado | https://github.com/diego082006/Diego-Delgado |
+| Diego Delgado | (https://github.com/diego082006/Mafalda/blob/main/README.md) |
 | Leandro Friedl | [Escucha Artaud](https://leanfriedl.github.io/spinetta.html) |
 | Tomas Fernandez Rojo | [TomasFernandezRojo](https://tomasfernandezrojo.github.io) |
 | Federico Libonati | [Fedelibonatiaus](https://fedelibonatiaus.github.io/mi-pagina-fede/) |
