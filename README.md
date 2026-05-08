@@ -56,4 +56,5 @@ git push origin main
 | Leandro Friedl | [Escucha Artaud](https://leanfriedl.github.io/spinetta.html) |
 | Tomas Fernandez Rojo | [TomasFernandezRojo](https://tomasfernandezrojo.github.io) |
 | Federico Libonati | [Fedelibonatiaus](https://fedelibonatiaus.github.io/mi-pagina-fede/) |
+| Santiago Rafael Yamamoto | [Mundial 26](https://santiagoyamamoto.github.io/santiagoyamamoto/) |
 
