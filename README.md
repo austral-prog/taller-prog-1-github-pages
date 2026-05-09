@@ -58,4 +58,4 @@ git push origin main
 | Tomas Fernandez Rojo | [TomasFernandezRojo](https://tomasfernandezrojo.github.io) |
 | Federico Libonati | [Fedelibonatiaus](https://fedelibonatiaus.github.io/mi-pagina-fede/) |
 | Santiago Rafael Yamamoto | [Mundial 26](https://santiagoyamamoto.github.io/santiagoyamamoto/) |
-| Pedro Ignacio Farrus | [click me](http://127.0.0.1:5500/index.html) |
+| Pedro Ignacio Farrus | [click me](https://pedrofarrus007-cpu.github.io/Pedro-Farrus/) |
