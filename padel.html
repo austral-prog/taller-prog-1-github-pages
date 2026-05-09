@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMASH · El Pádel sin filtros</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --lime: #d4ff3a;
+    --hot: #ff3d6e;
+    --ink: #0a0a0a;
+    --paper: #f5f1e8;
+    --court: #2d6a4f;
+    --court-dark: #1b4332;
+    --shadow: 8px 8px 0 var(--ink);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Bricolage Grotesque', sans-serif;
+    overflow-x: hidden;
+    line-height: 1.4;
+  }
+
+  /* Grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 1000;
+    mix-blend-mode: multiply;
+  }
+
+  .display { font-family: 'Archivo Black', sans-serif; letter-spacing: -0.02em; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* ============ NAV ============ */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 1.2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background: rgba(245, 241, 232, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--ink);
+  }
+  nav .logo {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: -0.03em;
+  }
+  nav .logo span { color: var(--hot); }
+  nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  nav ul a {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: relative;
+  }
+  nav ul a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--hot);
+    transition: width 0.3s;
+  }
+  nav ul a:hover::after { width: 100%; }
+
+  /* ============ HERO ============ */
+  .hero {
+    min-height: 100vh;
+    padding: 8rem 2rem 4rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background:
+      radial-gradient(circle at 20% 30%, var(--lime) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, var(--hot) 0%, transparent 35%),
+      var(--paper);
+  }
+  .hero-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-tag {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: var(--ink);
+    color: var(--lime);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+    transform: rotate(-1deg);
+    animation: bounce 2s ease-in-out infinite;
+  }
+  @keyframes bounce {
+    0%,100% { transform: rotate(-1deg) translateY(0); }
+    50% { transform: rotate(-1deg) translateY(-4px); }
+  }
+  .hero h1 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(3.5rem, 12vw, 11rem);
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    margin-bottom: 2rem;
+  }
+  .hero h1 span.outline {
+    -webkit-text-stroke: 2px var(--ink);
+    color: transparent;
+  }
+  .hero h1 span.hot { color: var(--hot); display: inline-block; transform: rotate(-3deg); }
+  .hero p.lead {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    max-width: 600px;
+    margin-bottom: 2rem;
+    font-weight: 500;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--ink);
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+  }
+  .stat .num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+  .stat .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-top: 0.3rem;
+  }
+
+  /* Floating ball */
+  .ball {
+    position: absolute;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #f0ff8a, var(--lime) 60%, #9bc92a);
+    box-shadow:
+      inset -10px -15px 30px rgba(0,0,0,0.3),
+      var(--shadow);
+    animation: float 4s ease-in-out infinite;
+    z-index: 1;
+  }
+  .ball::before, .ball::after {
+    content: '';
+    position: absolute;
+    border: 2px solid rgba(255,255,255,0.6);
+    border-radius: 50%;
+    inset: 0;
+  }
+  .ball::before {
+    transform: rotate(35deg) scale(1.1, 0.4);
+  }
+  .ball::after {
+    transform: rotate(-35deg) scale(0.4, 1.1);
+  }
+  .ball.b1 { top: 15%; right: 8%; }
+  .ball.b2 { bottom: 12%; left: 6%; width: 80px; height: 80px; animation-delay: 1s; }
+  @keyframes float {
+    0%,100% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-25px) rotate(180deg); }
+  }
+
+  /* ============ MARQUEE ============ */
+  .marquee {
+    background: var(--ink);
+    color: var(--lime);
+    padding: 1.5rem 0;
+    overflow: hidden;
+    border-top: 3px solid var(--ink);
+    border-bottom: 3px solid var(--ink);
+  }
+  .marquee-track {
+    display: flex;
+    gap: 3rem;
+    white-space: nowrap;
+    animation: scroll 25s linear infinite;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.8rem;
+  }
+  .marquee-track span { display: flex; align-items: center; gap: 3rem; }
+  .marquee-track .dot {
+    width: 12px; height: 12px;
+    background: var(--hot);
+    border-radius: 50%;
+    display: inline-block;
+  }
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ============ SECTIONS ============ */
+  section { padding: 6rem 2rem; position: relative; }
+  .container { max-width: 1300px; margin: 0 auto; }
+
+  .section-header {
+    margin-bottom: 4rem;
+    display: flex;
+    align-items: end;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    background: var(--ink);
+    color: var(--lime);
+    padding: 0.4rem 0.8rem;
+  }
+  .section-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    flex: 1;
+  }
+
+  /* ============ HISTORIA ============ */
+  .historia {
+    background: var(--paper);
+  }
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+  .tl-card {
+    background: white;
+    border: 3px solid var(--ink);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+  .tl-card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 12px 12px 0 var(--ink);
+  }
+  .tl-card .year {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 3rem;
+    color: var(--hot);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .tl-card h3 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+  .tl-card p { font-size: 0.95rem; }
+  .tl-card:nth-child(2n) { background: var(--lime); }
+  .tl-card:nth-child(3n) { background: #ffb8c9; }
+
+  /* ============ REGLAS ============ */
+  .reglas {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .reglas .section-num { background: var(--lime); color: var(--ink); }
+  .reglas .section-title { color: var(--paper); }
+  .reglas .section-title .accent { color: var(--lime); }
+
+  .reglas-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .court-viz {
+    background: var(--court);
+    border: 3px solid var(--lime);
+    aspect-ratio: 1 / 2;
+    position: relative;
+    box-shadow: 8px 8px 0 var(--hot);
+  }
+  .court-viz::before {
+    content: '';
+    position: absolute;
+    inset: 8%;
+    border: 3px solid white;
+  }
+  .court-viz .net {
+    position: absolute;
+    top: 50%; left: 0; right: 0;
+    height: 4px;
+    background: white;
+    transform: translateY(-50%);
+  }
+  .court-viz .service-line {
+    position: absolute;
+    left: 8%; right: 8%;
+    height: 2px;
+    background: rgba(255,255,255,0.7);
+  }
+  .court-viz .service-line.top { top: 30%; }
+  .court-viz .service-line.bot { bottom: 30%; }
+  .court-viz .center-line {
+    position: absolute;
+    top: 30%; bottom: 30%;
+    left: 50%;
+    width: 2px;
+    background: rgba(255,255,255,0.7);
+    transform: translateX(-50%);
+  }
+  .court-viz .label {
+    position: absolute;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--lime);
+    background: var(--ink);
+    padding: 0.2rem 0.5rem;
+  }
+  .court-viz .label.l1 { top: -12px; left: 50%; transform: translateX(-50%); }
+  .court-viz .label.l2 { bottom: -12px; left: 50%; transform: translateX(-50%); }
+  .court-viz .dim {
+    position: absolute;
+    color: var(--lime);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    writing-mode: vertical-rl;
+    right: -50px;
+    top: 50%;
+    transform: translateY(-50%) rotate(180deg);
+  }
+  .court-viz .dim-h {
+    position: absolute;
+    color: var(--lime);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .reglas-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .regla-item {
+    border-left: 4px solid var(--lime);
+    padding: 0.5rem 0 0.5rem 1.5rem;
+  }
+  .regla-item h4 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.1rem;
+    color: var(--lime);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.02em;
+  }
+  .regla-item p { font-size: 0.95rem; opacity: 0.9; }
+
+  /* ============ JUGADORES ============ */
+  .jugadores { background: var(--paper); }
+  .jugadores-intro {
+    max-width: 700px;
+    font-size: 1.15rem;
+    margin-bottom: 4rem;
+  }
+  .ranking {
+    display: grid;
+    gap: 0;
+    border: 3px solid var(--ink);
+    background: white;
+    box-shadow: var(--shadow);
+  }
+  .ranking-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 100px 140px 100px;
+    align-items: center;
+    padding: 1.2rem 1.5rem;
+    border-bottom: 2px solid var(--ink);
+    transition: background 0.2s;
+    gap: 1rem;
+  }
+  .ranking-row:last-child { border-bottom: none; }
+  .ranking-row:hover { background: var(--lime); }
+  .ranking-row.header {
+    background: var(--ink);
+    color: var(--lime);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .ranking-row.header:hover { background: var(--ink); }
+  .rank-pos {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 2rem;
+  }
+  .rank-pos.first { color: var(--hot); }
+  .rank-name {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+  }
+  .rank-flag { font-size: 1.5rem; }
+  .rank-pair {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+  }
+  .rank-points {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .leyenda {
+    background: var(--hot);
+    color: white;
+    padding: 3rem;
+    margin-top: 4rem;
+    border: 3px solid var(--ink);
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+  .leyenda .big-num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 6rem;
+    line-height: 0.9;
+  }
+  .leyenda h3 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+  }
+  .leyenda p { font-size: 1rem; }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 4rem 2rem 2rem;
+    text-align: center;
+  }
+  footer .display {
+    font-size: clamp(3rem, 8vw, 6rem);
+    color: transparent;
+    -webkit-text-stroke: 2px var(--lime);
+    letter-spacing: -0.03em;
+    margin-bottom: 2rem;
+  }
+  footer .meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    opacity: 0.6;
+    margin-top: 2rem;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 768px) {
+    nav ul { display: none; }
+    nav { padding: 1rem; }
+    .hero { padding: 6rem 1.5rem 3rem; }
+    section { padding: 4rem 1.5rem; }
+    .reglas-grid { grid-template-columns: 1fr; }
+    .court-viz { max-width: 280px; margin: 0 auto; }
+    .ranking-row {
+      grid-template-columns: 50px 1fr 80px;
+      font-size: 0.85rem;
+    }
+    .ranking-row .rank-pair, .ranking-row .col-pair { display: none; }
+    .rank-pos { font-size: 1.4rem; }
+    .rank-name { font-size: 0.9rem; }
+    .leyenda {
+      grid-template-columns: 1fr;
+      padding: 2rem;
+      text-align: center;
+    }
+    .leyenda .big-num { font-size: 4rem; }
+    .ball.b1 { width: 70px; height: 70px; right: 5%; }
+    .ball.b2 { width: 50px; height: 50px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">SMASH<span>.</span></div>
+  <ul>
+    <li><a href="#historia">Historia</a></li>
+    <li><a href="#reglas">Reglas</a></li>
+    <li><a href="#jugadores">Top Players</a></li>
+  </ul>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="ball b1"></div>
+  <div class="ball b2"></div>
+  <div class="hero-content">
+    <div class="hero-tag mono">// EL DEPORTE QUE NO PARA DE CRECER</div>
+    <h1>
+      PEGALE<br>
+      <span class="outline">FUERTE</span><br>
+      <span class="hot">AL PÁDEL.</span>
+    </h1>
+    <p class="lead">Cuatro paredes, dos parejas, una pelota. El deporte que nació en México, se hizo grande en España y conquistó al mundo.</p>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="num">1969</span>
+        <span class="label">Año de origen</span>
+      </div>
+      <div class="stat">
+        <span class="num">+30M</span>
+        <span class="label">Jugadores en el mundo</span>
+      </div>
+      <div class="stat">
+        <span class="num">90+</span>
+        <span class="label">Países lo practican</span>
+      </div>
+      <div class="stat">
+        <span class="num">20×10</span>
+        <span class="label">Metros de cancha</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>SMASH <span class="dot"></span> VOLEA <span class="dot"></span> BANDEJA <span class="dot"></span> VÍBORA <span class="dot"></span> BAJADA DE PARED <span class="dot"></span> CHIQUITA <span class="dot"></span></span>
+    <span>SMASH <span class="dot"></span> VOLEA <span class="dot"></span> BANDEJA <span class="dot"></span> VÍBORA <span class="dot"></span> BAJADA DE PARED <span class="dot"></span> CHIQUITA <span class="dot"></span></span>
+  </div>
+</div>
+
+<!-- ============ HISTORIA ============ -->
+<section class="historia" id="historia">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">01 / HISTORIA</span>
+      <h2 class="section-title">De Acapulco<br>al mundo entero.</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-card">
+        <div class="year">'69</div>
+        <h3>Acapulco, México</h3>
+        <p>Enrique Corcuera adapta su cancha de squash y construye el primer "paddle-tennis": un patio con paredes de 3 metros y una red en el medio. Nace el pádel.</p>
+      </div>
+      <div class="tl-card">
+        <div class="year">'74</div>
+        <h3>Llega a España</h3>
+        <p>El príncipe Alfonso de Hohenlohe inaugura las primeras pistas en Marbella. España se convierte en el epicentro mundial del deporte.</p>
+      </div>
+      <div class="tl-card">
+        <div class="year">'75</div>
+        <h3>Argentina lo adopta</h3>
+        <p>Julio Menditeguy lleva el pádel a Argentina y explota: en pocos años el país se transforma en una potencia mundial junto a España.</p>
+      </div>
+      <div class="tl-card">
+        <div class="year">'91</div>
+        <h3>Federación Internacional</h3>
+        <p>Se funda la FIP (Federación Internacional de Pádel). El deporte ya tiene reglas unificadas y un primer Mundial oficial.</p>
+      </div>
+      <div class="tl-card">
+        <div class="year">'05</div>
+        <h3>Era World Padel Tour</h3>
+        <p>Nace el circuito profesional que profesionaliza el deporte y lleva a sus estrellas a estadios llenos en toda Europa y Latinoamérica.</p>
+      </div>
+      <div class="tl-card">
+        <div class="year">'24</div>
+        <h3>Boom global</h3>
+        <p>Premier Padel (respaldado por Qatar Sports Investments) unifica el circuito profesional. El pádel llega a EE.UU., Asia y Medio Oriente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REGLAS ============ -->
+<section class="reglas" id="reglas">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">02 / REGLAS</span>
+      <h2 class="section-title">Lo básico para<br>no hacer <span class="accent">papelones.</span></h2>
+    </div>
+    <div class="reglas-grid">
+      <div>
+        <div class="court-viz">
+          <span class="label l1">FONDO</span>
+          <span class="label l2">FONDO</span>
+          <div class="service-line top"></div>
+          <div class="service-line bot"></div>
+          <div class="center-line"></div>
+          <div class="net"></div>
+          <span class="dim">20m largo</span>
+          <span class="dim-h">10m ancho</span>
+        </div>
+      </div>
+      <div class="reglas-list">
+        <div class="regla-item">
+          <h4>1. La cancha</h4>
+          <p>Rectángulo de 20×10 metros, dividido por una red de 88cm en el centro. Está rodeado de paredes de cristal y rejas metálicas que forman parte del juego.</p>
+        </div>
+        <div class="regla-item">
+          <h4>2. Se juega en parejas</h4>
+          <p>Siempre 2 contra 2. La sincronización con tu compañero es la mitad del juego. La otra mitad: leer al rival.</p>
+        </div>
+        <div class="regla-item">
+          <h4>3. El saque</h4>
+          <p>Por debajo de la cintura, picando la pelota contra el suelo primero. Tenés dos intentos, igual que el tenis. Cruzado al cuadro de servicio del rival.</p>
+        </div>
+        <div class="regla-item">
+          <h4>4. Las paredes</h4>
+          <p>La pelota puede picar en el suelo y luego rebotar en las paredes. Los rebotes son parte fundamental del juego: definen estrategia y estilo.</p>
+        </div>
+        <div class="regla-item">
+          <h4>5. El puntaje</h4>
+          <p>Idéntico al tenis: 15, 30, 40, juego. Se juegan sets a 6 games con tie-break, y el partido es al mejor de 3 sets.</p>
+        </div>
+        <div class="regla-item">
+          <h4>6. La pala</h4>
+          <p>Maciza, sin cuerdas, perforada. Hasta 38mm de espesor y 45.5cm de largo. La forma (redonda, lágrima o diamante) define tu estilo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ JUGADORES ============ -->
+<section class="jugadores" id="jugadores">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">03 / TOP PLAYERS</span>
+      <h2 class="section-title">Los que mandan<br>en el circuito.</h2>
+    </div>
+    <p class="jugadores-intro">El ranking masculino del circuito Premier Padel a 2026. Recordá que en pádel los puntos se asignan a la pareja, así que los compañeros comparten posición.</p>
+
+    <div class="ranking">
+      <div class="ranking-row header">
+        <span>POS</span>
+        <span>JUGADOR</span>
+        <span>PAÍS</span>
+        <span class="col-pair">PAREJA</span>
+        <span style="text-align:right;">PUNTOS</span>
+      </div>
+      <div class="ranking-row">
+        <span class="rank-pos first">01</span>
+        <span class="rank-name">Agustín Tapia</span>
+        <span class="rank-flag">🇦🇷</span>
+        <span class="rank-pair">con Coello</span>
+        <span class="rank-points">20.670</span>
+      </div>
+      <div class="ranking-row">
+        <span class="rank-pos first">01</span>
+        <span class="rank-name">Arturo Coello</span>
+        <span class="rank-flag">🇪🇸</span>
+        <span class="rank-pair">con Tapia</span>
+        <span class="rank-points">20.670</span>
+      </div>
+      <div class="ranking-row">
+        <span class="rank-pos">03</span>
+        <span class="rank-name">Ale Galán</span>
+        <span class="rank-flag">🇪🇸</span>
+        <span class="rank-pair">con Chingotto</span>
+        <span class="rank-points">17.320</span>
+      </div>
+      <div class="ranking-row">
+        <span class="rank-pos">03</span>
+        <span class="rank-name">Fede Chingotto</span>
+        <span class="rank-flag">🇦🇷</span>
+        <span class="rank-pair">con Galán</span>
+        <span class="rank-points">17.320</span>
+      </div>
+      <div class="ranking-row">
+        <span class="rank-pos">05</span>
+        <span class="rank-name">Juan Lebrón</span>
+        <span class="rank-flag">🇪🇸</span>
+        <span class="rank-pair">con Augsburger</span>
+        <span class="rank-points">7.905</span>
+      </div>
+      <div class="ranking-row">
+        <span class="rank-pos">06</span>
+        <span class="rank-name">Paquito Navarro</span>
+        <span class="rank-flag">🇪🇸</span>
+        <span class="rank-pair">—</span>
+        <span class="rank-points">7.845</span>
+      </div>
+      <div class="ranking-row">
+        <span class="rank-pos">07</span>
+        <span class="rank-name">Franco Stupaczuk</span>
+        <span class="rank-flag">🇦🇷</span>
+        <span class="rank-pair">con Yanguas</span>
+        <span class="rank-points">6.322</span>
+      </div>
+      <div class="ranking-row">
+        <span class="rank-pos">07</span>
+        <span class="rank-name">Mike Yanguas</span>
+        <span class="rank-flag">🇪🇸</span>
+        <span class="rank-pair">con Stupaczuk</span>
+        <span class="rank-points">6.322</span>
+      </div>
+      <div class="ranking-row">
+        <span class="rank-pos">09</span>
+        <span class="rank-name">Leo Augsburger</span>
+        <span class="rank-flag">🇪🇸</span>
+        <span class="rank-pair">con Lebrón</span>
+        <span class="rank-points">6.115</span>
+      </div>
+      <div class="ranking-row">
+        <span class="rank-pos">10</span>
+        <span class="rank-name">Martín Di Nenno</span>
+        <span class="rank-flag">🇦🇷</span>
+        <span class="rank-pair">—</span>
+        <span class="rank-points">5.155</span>
+      </div>
+    </div>
+
+    <div class="leyenda">
+      <div class="big-num">16</div>
+      <div>
+        <h3>Fernando Belasteguín · El GOAT</h3>
+        <p>El argentino de Pehuajó ostenta un récord que probablemente nadie supere: <strong>16 años consecutivos como número 1 del mundo (2002–2017)</strong>. La racha de dominación más larga de cualquier deporte de raqueta. El pádel tiene un solo GOAT, y se llama Bela.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="display">SMASH.</div>
+  <p>Una página sobre el deporte que se está comiendo al mundo.</p>
+  <div class="meta">// HECHO CON CARIÑO Y MUCHAS HORAS DE CANCHA · 2026</div>
+</footer>
+
+<script>
+  // Smooth reveal on scroll
+  const cards = document.querySelectorAll('.tl-card, .regla-item, .ranking-row');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.15 });
+
+  cards.forEach((c, i) => {
+    c.style.opacity = '0';
+    c.style.transform = 'translateY(20px)';
+    c.style.transition = `opacity 0.5s ease ${i * 0.05}s, transform 0.5s ease ${i * 0.05}s`;
+    obs.observe(c);
+  });
+</script>
+
+</body>
+</html>
