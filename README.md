@@ -59,3 +59,4 @@ git push origin main
 | Federico Libonati | [Fedelibonatiaus](https://fedelibonatiaus.github.io/mi-pagina-fede/) |
 | Santiago Rafael Yamamoto | [Mundial 26](https://santiagoyamamoto.github.io/santiagoyamamoto/) |
 | Pedro Ignacio Farrus | [click me](https://pedrofarrus007-cpu.github.io/Pedro-Farrus/) |
+| Santiago Pyznar | [Padel](https://santipyznar.github.io/taller-prog-1-github-pages/) |
